@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
 export async function GET() {
   // Consultamos la tabla 'projects' que creaste en el dashboard
   const { data, error } = await supabase
