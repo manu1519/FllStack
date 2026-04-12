@@ -1,11 +1,16 @@
 import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
-  const projects = [
-    { id: 1, title: "Microcontroller STM32 Project", tech: "C++, Embedded" },
-    { id: 2, title: "Cloud Automation API", tech: "Node.js, AWS" },
-    { id: 3, title: "Docker Workflow n8n", tech: "YAML, Docker" }
-  ];
+  // Consultamos la tabla 'projects' que creaste en el dashboard
+  const { data, error } = await supabase
+    .from('TST')
+    .select('*')
+    .order('TST', { ascending: false });
 
-  return NextResponse.json(projects);
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
 }
