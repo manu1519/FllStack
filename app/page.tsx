@@ -111,7 +111,7 @@ export default function Home() {
 
                 {/* TAGS */}
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech_stack?.split(',').map((tech, i) => (
+                  {project.tech_stack?.split(',').map((tech: string, i: number) => (
                     <span key={i} className="px-3 py-1 bg-stone-900/10 dark:bg-stone-800 text-stone-900 dark:text-stone-400 text-[10px] font-black uppercase tracking-wider rounded-lg border border-stone-950/20">
                       {tech.trim()}
                     </span>
